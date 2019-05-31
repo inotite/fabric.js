@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="800"></canvas>
+
+    <script src="fabric.js"></script>
+    <script>
+        var canvas = new fabric.Canvas('canvas');
+        var rect = new fabric.Rect({ top: 100, left: 100, width: 100, height: 100});
+        
+        canvas.add(rect);
+
+        var circle = new fabric.Circle({ top : 200, left: 200, radius: 100});
+
+        circle.setGradient('fill', {
+            x1: 0, y1: 0,
+            x2: 0, y2: circle.height,
+            colorStops: {
+                0: "red",
+                0.2: "orange",
+                0.4: "yellow",
+                0.6: "green",
+                0.8: "blue",
+                1: "purple"
+            }
+        });
+
+        canvas.add(circle);
+
+        // var text = new fabric.Text('Hello World', { left: 100, top: 40 });
+
+        // canvas.add(text);
+
+        // var comicSansText = new fabric.Text("I'm comic sans Text", { fontFamily: 'Fixed' });
+
+        // canvas.add(comicSansText);
+
+        // var text40 = new fabric.Text("I'm at fontSize 40", {
+        //   fontSize: 40
+        // });
+
+        // var text20 = new fabric.Text("I'm at fontSize 20", {
+        //     fontSize: 20
+        // });
+
+        // canvas.add( text40, text20 );
+
+        // var normalText = new fabric.Text("I'm a normal text", {
+        //   fontWeight: 'normal'
+        // });
+
+        // var boldText = new fabric.Text("I'm at bold text", {
+        //     fontWeight: 'bold'
+        // });
+
+        // canvas.add(normalText, boldText);
+
+        // var shadowText1 = new fabric.Text("I'm a text with shadow", {
+        //   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px'
+        // });
+        // var shadowText2 = new fabric.Text("And another shadow", {
+        //     shadow: 'rgba(0,0,0,0.2) 0 0 5px'
+        // });
+        // var shadowText3 = new fabric.Text("Lorem ipsum dolor sit", {
+        //     shadow: 'green -5px -5px 3px'
+        // });
+
+        // canvas.add( shadowText1 );
+        // canvas.add( shadowText2 );
+        // canvas.add( shadowText3 );
+
+        // var italicText = new fabric.Text("A very fancy italic text", {
+        //     fontStyle: 'italic',
+        //     fontFamily: 'Delicious'
+        // });
+        // var anotherItalicText = new fabric.Text("another italic text", {
+        //     fontStyle: 'italic',
+        //     fontFamily: 'Hoefler Text'
+        // });
+
+        // canvas.add(italicText);
+        // canvas.add(anotherItalicText);
+
+        // var textWithStroke = new fabric.Text("Text with a stroke", {
+        //     stroke: '#ff1318',
+        //     strokeWidth: 1
+        // });
+
+        // var loremIpsumDolor = new fabric.Text("Lorem ipsum dolor", {
+        //     fontFamily: 'Impact',
+        //     stroke: '#c3bfbf',
+        //     strokeWidth: 3
+        // });
+
+        // canvas.add(textWithStroke);
+        // canvas.add(loremIpsumDolor);
+
+        // var text = 'this is\na multiline\ntext\naligned right!';
+
+        // var alignedRightText = new fabric.Text(text, {
+        //     textAlign: 'right'
+        // });
+
+        // canvas.add(alignedRightText);
+
+        // var lineHeight3 = new fabric.Text('Lorem ipsum dolor sit amet\n consectetur adipisicing elit,\n sed do eiusmod tempor incidunt\n ut labo', {
+        //     lineHeight: 3
+        // });
+        // var lineHeight1 = new fabric.Text('Lorem ipsum dolor sit amet\n consectetur adipisicing elit,\n sed do eiusmod tempor incidunt\n ut labo', {
+        //     lineHeight: 1
+        // });
+
+        // lineHeight3.set('angle', 20)
+        // canvas.add(lineHeight3, lineHeight1);
+
+        var text = 'this is\na multiline\ntext\nwith\ncustom lineheight\n&background';
+        var textWithBackground = new fabric.Text(text, {
+            textBackgroundColor: 'rgb(0,200,0)'
+        });
+
+        canvas.add(textWithBackground);
+
+        canvas.on('object:modified', function(options) {
+            if (options.target) {
+                console.log('an object was clicked! ', options.target.type);
+            }
+        });
+
+        rect.on('selected', function() {
+            console.log( "Rect is selected!" );
+        });
+
+        circle.on('selected', function() {
+            console.log( "Circle is selected!" );
+        });
+        
+    </script>
+</body>
+</html>
